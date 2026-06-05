@@ -1,7 +1,10 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  /* Neutral cream canvas that matches the hub theme; shows in overscroll
+     areas behind the per-page gradients. The apps are light-themed only,
+     so there is intentionally no prefers-color-scheme: dark override. */
+  --background: #fdf8ea;
   --foreground: #171717;
 }
 
@@ -14,15 +17,18 @@
     "Liberation Mono", "Courier New", monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer utilities {
+  /* Full viewport height with a 100vh fallback for Safari versions that
+     don't support the dvh unit (otherwise the page collapses to content
+     height and leaves empty space below on iPhone). */
+  .min-h-screen-dvh {
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
 }

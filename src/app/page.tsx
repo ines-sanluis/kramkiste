@@ -4,7 +4,7 @@ import { SITES } from "@/lib/sites";
 
 export default function Home() {
   return (
-    <div className="min-h-dvh bg-gradient-to-b from-[#fdf8ea] to-[#f4e6c6] text-[#5b4a36]">
+    <div className="min-h-screen-dvh bg-gradient-to-b from-[#fdf8ea] to-[#f4e6c6] text-[#5b4a36]">
       <main className="mx-auto flex w-full max-w-md flex-col gap-7 px-5 pb-24 pt-12">
         <header className="flex flex-col gap-1">
           <h1 className="flex items-center gap-2 text-3xl font-extrabold tracking-tight">

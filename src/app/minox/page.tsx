@@ -836,7 +836,7 @@ function ConceptSection({ concept }: { concept: Concept }) {
 
 export default function MinoxPage() {
   return (
-    <div className="min-h-dvh bg-stone-100 text-stone-900">
+    <div className="min-h-screen-dvh bg-stone-100 text-stone-900">
       <main className="mx-auto flex w-full max-w-md flex-col gap-4 px-5 pb-24 pt-12">
         <header className="flex flex-col gap-2">
           <div className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-500">

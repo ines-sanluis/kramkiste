@@ -203,7 +203,7 @@ export default async function SunsetPage() {
   }
 
   return (
-    <div className="min-h-dvh bg-gradient-to-b from-[#f2b654] via-[#f47a4d] via-55% to-[#463e85] text-[#1d1230]">
+    <div className="min-h-screen-dvh bg-gradient-to-b from-[#f2b654] via-[#f47a4d] via-55% to-[#463e85] text-[#1d1230]">
       <main className="mx-auto flex w-full max-w-md flex-col gap-6 px-5 pb-24 pt-10">
         <header className="flex flex-col items-center gap-3 text-center">
           <div className="relative h-32 w-32">
