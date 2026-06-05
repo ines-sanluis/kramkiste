@@ -859,7 +859,7 @@ export default function MinoxPage() {
 
         {/* Cheat Sheet — quick reference */}
         {/* Setup helper — interactive: pick the shot, get the settings */}
-        <Section id="setup-helper" title="Setup helper" defaultOpen>
+        <Section id="setup-helper" title="Setup helper">
           <SetupHelper />
         </Section>
 
