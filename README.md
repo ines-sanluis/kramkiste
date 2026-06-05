@@ -1,8 +1,24 @@
-## Sunset in Munich
+## Kramkiste
 
-A tiny, cute mobile-first Next.js site that shows the next sunset forecast (quality, cloud cover, golden/blue hour) for a specific balcony in Munich.
+A tiny, mobile-first Next.js hub ("Kramkiste" = a cozy box of odds and ends) that hosts a
+few small sites built for a friend.
+The home screen lists every site as a card, and a persistent bottom tab bar lets you
+switch between them. Each site keeps its own full-screen theme; the hub chrome stays neutral.
 
-Data source: [Sunsethue API docs](https://documenter.getpostman.com/view/39964523/2sAYBUDY4W).
+Current sites:
+
+- **Sonnenuntergang** (`/sunset`) — next sunset forecast (quality, cloud cover, golden/blue
+  hour) for a specific balcony in Munich. Data source:
+  [Sunsethue API docs](https://documenter.getpostman.com/view/39964523/2sAYBUDY4W).
+- **Minox 35 GT** (`/minox`) — a small manual for using the camera (scaffold; content TBD).
+
+### Adding a new site
+
+1. Add an entry to `SITES` in `src/lib/sites.tsx` (`id`, `title`, `blurb`, `href`, `icon`, `accent`).
+2. Create `src/app/<id>/page.tsx` with the site's own theme.
+
+The home grid (`src/app/page.tsx`) and the bottom tab bar (`src/components/BottomTabBar.tsx`)
+are both generated from that registry, so no other wiring is needed.
 
 ### Setup
 
