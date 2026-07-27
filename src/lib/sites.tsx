@@ -21,6 +21,8 @@ export type SiteEntry = {
   icon: ReactNode;
   /** Tailwind classes for the card's accent (background + text). */
   accent: string;
+  /** If the website is external */
+  external?: boolean;
 };
 
 export const SITES: SiteEntry[] = [
@@ -46,6 +48,7 @@ export const SITES: SiteEntry[] = [
     blurb: "Bars zum gemeinsamen Entdecken und Abhaken.",
     href: "www.bares-cutres.vercel.app",
     icon: <span className="text-2xl">🍸</span>,
-    accent: "bg-gradient-to-br from-[#A2708A] to-[#BDA0BC] text-white"
+    accent: "bg-gradient-to-br from-[#A2708A] to-[#BDA0BC] text-white",
+    external: true
   }
 ];
