@@ -40,4 +40,12 @@ export const SITES: SiteEntry[] = [
     icon: <span className="text-2xl">📷</span>,
     accent: "bg-gradient-to-br from-[#a87c4f] to-[#6f4e2e] text-white",
   },
+  {
+    id: "bars",
+    title: "100 Boazn",
+    blurb: "Bars zum gemeinsamen Entdecken und Abhaken.",
+    href: "www.bares-cutres.vercel.app",
+    icon: <span className="text-2xl">🍸</span>,
+    accent: "bg-gradient-to-br from-[#A2708A] to-[#BDA0BC] text-white"
+  }
 ];
