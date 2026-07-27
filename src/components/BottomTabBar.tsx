@@ -13,7 +13,7 @@ type Tab = {
 
 const TABS: Tab[] = [
   { href: "/", label: "Kramkiste", icon: <span className="text-xl">📦</span> },
-  ...SITES.map((site) => ({
+  ...SITES.filter((s) => !s.external).map((site) => ({
     href: site.href,
     label: site.title,
     icon: site.icon,
