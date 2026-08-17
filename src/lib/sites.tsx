@@ -46,7 +46,7 @@ export const SITES: SiteEntry[] = [
     id: "bars",
     title: "100 Boazn",
     blurb: "Bars zum gemeinsamen Entdecken und Abhaken.",
-    href: "https://www.bares-cutres.vercel.app",
+    href: "https://bares-cutres.vercel.app",
     icon: <span className="text-2xl">🍸</span>,
     accent: "bg-gradient-to-br from-[#A2708A] to-[#BDA0BC] text-white",
     external: true
