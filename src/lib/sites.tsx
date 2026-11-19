@@ -23,7 +23,15 @@ export type SiteEntry = {
   accent: string;
   /** If the website is external */
   external?: boolean;
+  /** Hidden until this day (Munich time, "YYYY-MM-DD"). */
+  unlocksOn?: string;
 };
+
+/** Whether a site should be shown on `today` ("YYYY-MM-DD", Munich time). */
+export function isSiteVisible(site: Pick<SiteEntry, "unlocksOn">, today: string | null): boolean {
+  if (!site.unlocksOn) return true;
+  return today !== null && today >= site.unlocksOn;
+}
 
 export const SITES: SiteEntry[] = [
   {
@@ -50,5 +58,14 @@ export const SITES: SiteEntry[] = [
     icon: <span className="text-2xl">🍸</span>,
     accent: "bg-gradient-to-br from-[#A2708A] to-[#BDA0BC] text-white",
     external: true
-  }
+  },
+  {
+    id: "advent",
+    title: "Adventskalender",
+    blurb: "Jeden Tag ein Türchen, bis Weihnachten. Und vielleicht ein bisschen länger.",
+    href: "/advent",
+    icon: <span className="text-2xl">🎄</span>,
+    accent: "bg-gradient-to-br from-[#2a4a37] to-[#173024] text-white",
+    unlocksOn: "2026-12-01",
+  },
 ];

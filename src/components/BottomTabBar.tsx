@@ -2,13 +2,16 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useSyncExternalStore } from "react";
 
-import { SITES } from "@/lib/sites";
+import { isSiteVisible, SITES } from "@/lib/sites";
+import { todayInMunich } from "@/lib/munichDate";
 
 type Tab = {
   href: string;
   label: string;
   icon: React.ReactNode;
+  unlocksOn?: string;
 };
 
 const TABS: Tab[] = [
@@ -17,6 +20,7 @@ const TABS: Tab[] = [
     href: site.href,
     label: site.title,
     icon: site.icon,
+    unlocksOn: site.unlocksOn,
   })),
 ];
 
@@ -25,13 +29,19 @@ function isActive(pathname: string, href: string) {
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
+const noopSubscribe = () => () => {};
+
 export function BottomTabBar() {
   const pathname = usePathname();
+  // The layout is prerendered, so read the date on the client only
+  // (null on the server: date-locked tabs stay hidden until hydration).
+  const today = useSyncExternalStore(noopSubscribe, () => todayInMunich(), () => null);
+  const tabs = TABS.filter((tab) => isSiteVisible(tab, today));
 
   return (
     <nav className="fixed inset-x-0 bottom-0 z-50 border-t border-[#e3d2a8] bg-[#fdf6e6]/95 backdrop-blur">
       <ul className="mx-auto flex w-full max-w-md items-stretch justify-around px-2 pb-[env(safe-area-inset-bottom)]">
-        {TABS.map((tab) => {
+        {tabs.map((tab) => {
           const active = isActive(pathname, tab.href);
           return (
             <li key={tab.href} className="flex-1">

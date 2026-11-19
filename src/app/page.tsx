@@ -1,8 +1,12 @@
 import Link from "next/link";
+import { connection } from "next/server";
 
-import { SITES } from "@/lib/sites";
+import { isSiteVisible, SITES } from "@/lib/sites";
+import { todayInMunich } from "@/lib/munichDate";
 
-export default function Home() {
+export default async function Home() {
+  await connection(); // render per request so date-locked sites appear on their day
+  const today = todayInMunich();
   return (
     <div className="min-h-screen-dvh bg-gradient-to-b from-[#fdf8ea] to-[#f4e6c6] text-[#5b4a36]">
       <main className="mx-auto flex w-full max-w-md flex-col gap-7 px-5 pb-24 pt-12">
@@ -17,7 +21,7 @@ export default function Home() {
         </header>
 
         <div className="flex flex-col gap-5">
-          {SITES.map((site) => {
+          {SITES.filter((site) => isSiteVisible(site, today)).map((site) => {
             const className =
               "group flex items-center gap-4 rounded-2xl border-2 border-dashed border-[#d8c39a] bg-[#fdf6e6] p-5 shadow-[0_6px_16px_rgba(120,95,55,0.10)] transition odd:-rotate-1 even:rotate-1 hover:-translate-y-0.5 hover:rotate-0 hover:border-[#caad79] hover:bg-[#f7ecce] focus-visible:rotate-0 focus-visible:border-[#caad79] focus-visible:bg-[#f7ecce] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#caad79]/60";
 
